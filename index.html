@@ -1,0 +1,104 @@
+<!doctype html>
+<!-- The Time Machine GitHub pages theme was designed and developed by Jon Rohan, on Feb 7, 2012. -->
+<!-- Follow him for fun. http://twitter.com/jonrohan. Tail his code on http://github.com/jonrohan -->
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <link rel="stylesheet" href="stylesheets/stylesheet.css" media="screen"/>
+  <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="javascripts/script.js"></script>
+
+  <title>Mruby-audite</title>
+  <meta name="description" content="Portable mp3 player for mruby">
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <header>
+      <h1 class="title">Mruby-audite</h1>
+    </header>
+    <div id="container">
+      <p class="tagline">Portable mp3 player for mruby</p>
+      <div id="main" role="main">
+        <div class="download-bar">
+        <div class="inner">
+          <a href="https://github.com/georgi/mruby-audite/tarball/master" class="download-button tar"><span>Download</span></a>
+          <a href="https://github.com/georgi/mruby-audite/zipball/master" class="download-button zip"><span>Download</span></a>
+          <a href="https://github.com/georgi/mruby-audite" class="code">View Mruby-audite on GitHub</a>
+        </div>
+        <span class="blc"></span><span class="trc"></span>
+        </div>
+        <article class="markdown-body">
+          <h1>Mruby - Audite - a portable mp3 player in MRuby</h1>
+
+<p>Audite is a portable ruby library for playing mp3 files built on
+libmp123 and portaudio.</p>
+
+<h2>Features</h2>
+
+<ul>
+<li>Nonblocking playback using native threads</li>
+<li>Realtime seeking</li>
+<li>Progress information</li>
+<li>Simple level meter</li>
+</ul><h2>Usage</h2>
+
+<pre><code>p = Portaudio.new
+m = Mpg123.new("01.mp3")
+p.start(m)
+p.seek(44100 * 100)
+p.stop
+
+</code></pre>
+
+<h2>Requirements</h2>
+
+<ul>
+<li>Mruby</li>
+<li>Portaudio &gt;= 19</li>
+<li>Mpg123 &gt;= 1.14</li>
+</ul><h2>Install</h2>
+
+<pre><code>brew install portaudio
+brew install mpg123
+</code></pre>
+
+<p>or</p>
+
+<pre><code>apt-get install libportaudiocpp0 portaudio19-dev libmpg123-dev
+</code></pre>
+
+<p>Add this line to <code>build_config.rb</code> in mruby:</p>
+
+<pre><code>conf.gem '../mruby-audite'
+</code></pre>
+        </article>
+      </div>
+    </div>
+    <footer>
+      <div class="owner">
+      <p><a href="https://github.com/georgi" class="avatar"><img src="https://secure.gravatar.com/avatar/591cf859056d3be951d0668367e39604?s=30&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="48" height="48"/></a> <a href="https://github.com/georgi">georgi</a> maintains <a href="https://github.com/georgi/mruby-audite">Mruby-audite</a></p>
+
+
+      </div>
+      <div class="creds">
+        <small>This page generated using <a href="https://pages.github.com/">GitHub Pages</a><br/>theme by <a href="http://twitter.com/jonrohan/">Jon Rohan</a></small>
+      </div>
+    </footer>
+  </div>
+  <div class="current-section">
+    <a href="#top">Scroll to top</a>
+    <a href="https://github.com/georgi/mruby-audite/tarball/master" class="tar">tar</a><a href="https://github.com/georgi/mruby-audite/zipball/master" class="zip">zip</a><a href="" class="code">source code</a>
+    <p class="name"></p>
+  </div>
+
+  
+</body>
+</html>
