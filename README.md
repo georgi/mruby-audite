@@ -1,5 +1,5 @@
-Mruby - Audite - a portable mp3 player in MRuby
-===============================================
+Audite - a portable mp3 player for MRuby
+========================================
 
 Audite is a portable ruby library for playing mp3 files built on
 libmp123 and portaudio.
@@ -40,8 +40,12 @@ or
 apt-get install libportaudiocpp0 portaudio19-dev libmpg123-dev
 ```
 
-Add this line to `build_config.rb` in mruby:
+Add this line to `build_config.rb` in the mruby source folder:
+
 ```
-conf.gem '../mruby-audite'
+conf.gem :git => 'git://github.com/georgi/mruby-audite.git', :branch => 'master'
 ```
 
+## References
+
+See also https://github.com/georgi/audite
