@@ -111,7 +111,7 @@ mrb_value mrb_mpg123_read(mrb_state *mrb, mrb_value self)
 
   if (err == MPG123_OK || err == MPG123_DONE) {
     for (i = 0; i < size; i++) {
-      mrb_ary_set(mrb, result, i, mrb_float_value(buffer[i]));
+      mrb_ary_set(mrb, result, i, mrb_float_value(mrb, buffer[i]));
     }
     free(buffer);
   }
@@ -129,12 +129,12 @@ mrb_value mrb_mpg123_length(mrb_state *mrb, mrb_value self)
 
 mrb_value mrb_mpg123_spf(mrb_state *mrb, mrb_value self)
 {
-  return mrb_float_value(mpg123_spf(DATA_PTR(self)));
+  return mrb_float_value(mrb, mpg123_spf(DATA_PTR(self)));
 }
 
 mrb_value mrb_mpg123_tpf(mrb_state *mrb, mrb_value self)
 {
-  return mrb_float_value(mpg123_tpf(DATA_PTR(self)));
+  return mrb_float_value(mrb, mpg123_tpf(DATA_PTR(self)));
 }
 
 mrb_value mrb_mpg123_tell(mrb_state *mrb, mrb_value self)
@@ -226,7 +226,7 @@ mrb_value mrb_portaudio_new(mrb_state *mrb, mrb_value klass)
 mrb_value mrb_portaudio_rms(mrb_state *mrb, mrb_value self)
 {
   Portaudio *portaudio = DATA_PTR(self);
-  return mrb_float_value(portaudio->rms);
+  return mrb_float_value(mrb,portaudio->rms);
 }
 
 mrb_value mrb_portaudio_start(mrb_state *mrb, mrb_value self)
@@ -273,11 +273,11 @@ void mrb_mruby_audite_gem_init(mrb_state *mrb) {
 
   mrb_portaudio_class = mrb_define_class(mrb, "Portaudio", mrb->object_class);
 
-  mrb_define_class_method(mrb, mrb_portaudio_class, "new", mrb_portaudio_new, ARGS_REQ(1));
-  mrb_define_method(mrb, mrb_portaudio_class, "rms", mrb_portaudio_rms, ARGS_NONE());
-  mrb_define_method(mrb, mrb_portaudio_class, "start", mrb_portaudio_start, ARGS_REQ(1));
-  mrb_define_method(mrb, mrb_portaudio_class, "stop", mrb_portaudio_stop, ARGS_NONE());
-  mrb_define_method(mrb, mrb_portaudio_class, "seek", mrb_portaudio_seek, ARGS_REQ(1));
+  mrb_define_class_method(mrb, mrb_portaudio_class, "new", mrb_portaudio_new, MRB_ARGS_REQ(1));
+  mrb_define_method(mrb, mrb_portaudio_class, "rms", mrb_portaudio_rms, MRB_ARGS_NONE());
+  mrb_define_method(mrb, mrb_portaudio_class, "start", mrb_portaudio_start, MRB_ARGS_REQ(1));
+  mrb_define_method(mrb, mrb_portaudio_class, "stop", mrb_portaudio_stop, MRB_ARGS_NONE());
+  mrb_define_method(mrb, mrb_portaudio_class, "seek", mrb_portaudio_seek, MRB_ARGS_REQ(1));
 
   err = mpg123_init();
 
@@ -287,18 +287,18 @@ void mrb_mruby_audite_gem_init(mrb_state *mrb) {
 
   mrb_mpg123_class = mrb_define_class(mrb, "Mpg123", mrb->object_class);
 
-  mrb_define_class_method(mrb, mrb_mpg123_class, "new", mrb_mpg123_new, ARGS_REQ(1));
+  mrb_define_class_method(mrb, mrb_mpg123_class, "new", mrb_mpg123_new, MRB_ARGS_REQ(1));
 
-  mrb_define_method(mrb, mrb_mpg123_class, "close", mrb_mpg123_close, ARGS_NONE());
-  mrb_define_method(mrb, mrb_mpg123_class, "read", mrb_mpg123_read, ARGS_REQ(1));
-  mrb_define_method(mrb, mrb_mpg123_class, "length", mrb_mpg123_length, ARGS_NONE());
-  mrb_define_method(mrb, mrb_mpg123_class, "spf", mrb_mpg123_spf, ARGS_NONE());
-  mrb_define_method(mrb, mrb_mpg123_class, "tpf", mrb_mpg123_tpf, ARGS_NONE());
-  mrb_define_method(mrb, mrb_mpg123_class, "tell", mrb_mpg123_tell, ARGS_NONE());
-  mrb_define_method(mrb, mrb_mpg123_class, "tellframe", mrb_mpg123_tellframe, ARGS_NONE());
-  mrb_define_method(mrb, mrb_mpg123_class, "seek", mrb_mpg123_seek, ARGS_REQ(1));
-  mrb_define_method(mrb, mrb_mpg123_class, "seek_frame", mrb_mpg123_seek_frame, ARGS_REQ(1));
-  mrb_define_method(mrb, mrb_mpg123_class, "timeframe", mrb_mpg123_timeframe, ARGS_REQ(1));
+  mrb_define_method(mrb, mrb_mpg123_class, "close", mrb_mpg123_close, MRB_ARGS_NONE());
+  mrb_define_method(mrb, mrb_mpg123_class, "read", mrb_mpg123_read, MRB_ARGS_REQ(1));
+  mrb_define_method(mrb, mrb_mpg123_class, "length", mrb_mpg123_length, MRB_ARGS_NONE());
+  mrb_define_method(mrb, mrb_mpg123_class, "spf", mrb_mpg123_spf, MRB_ARGS_NONE());
+  mrb_define_method(mrb, mrb_mpg123_class, "tpf", mrb_mpg123_tpf, MRB_ARGS_NONE());
+  mrb_define_method(mrb, mrb_mpg123_class, "tell", mrb_mpg123_tell, MRB_ARGS_NONE());
+  mrb_define_method(mrb, mrb_mpg123_class, "tellframe", mrb_mpg123_tellframe, MRB_ARGS_NONE());
+  mrb_define_method(mrb, mrb_mpg123_class, "seek", mrb_mpg123_seek, MRB_ARGS_REQ(1));
+  mrb_define_method(mrb, mrb_mpg123_class, "seek_frame", mrb_mpg123_seek_frame, MRB_ARGS_REQ(1));
+  mrb_define_method(mrb, mrb_mpg123_class, "timeframe", mrb_mpg123_timeframe, MRB_ARGS_REQ(1));
 }
 
 void mrb_mruby_audite_gem_final(mrb_state *mrb) {
